@@ -1,6 +1,6 @@
 # mebi-php-framework
 
-Very basic PHP framework, based on MVC.
+Very simple PHP framework, based on MVC.
 
 Designed with MVC-principles in mind, this framework provides some basic functions like webrouting and view-components.
 

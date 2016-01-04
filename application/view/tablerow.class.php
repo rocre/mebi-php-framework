@@ -1,6 +1,6 @@
 <?php
 
-class View_List extends View_Element implements View_Item
+class View_TableRow extends View_Element
 {
 	private $value;
 	private $items;
@@ -8,21 +8,21 @@ class View_List extends View_Element implements View_Item
 	public function __construct($class = 'null', $id = 'null')
 	{
 		parent::__construct($id, $class);
-		$this->items = array();
+		$this->elements = array();
 	}
 	
-	public function addItem(View_Item $item)
+	public function addItem(View_TableItem $item)
 	{
 		$this->items[] = $item;
 	}
 	
 	public function render()
 	{
-		$rendered = '<ul' . parent::__toString() . '>';
+		$rendered = '<tr' . parent::__toString() . '>';
 		foreach($this->items as $item) {
 			$rendered .= $item->render();
 		}
-		$rendered .= '</ul>';
+		$rendered .= '</tr>';
 		return $rendered;
 	}
 }

@@ -50,9 +50,18 @@ class Controller_Default extends Controller
 		
 		//Create div-block for displaying results
 		$block = new View_Block();
-		$block->addItem(new View_Paragraph('Degrees Celsius: ' . $this->model->getCelsius() . '&deg;C'));
-		$block->addItem(new View_Paragraph('Degrees Fahrenheit: ' . $this->model->getFahrenheit() . '&deg;F'));
-		$block->addItem(new View_Paragraph('Degrees Kelvin: ' . $this->model->getKelvin() . '&deg;K'));
+		$table = new View_Table();
+		$row = new View_TableRow();
+		$row->addItem(new View_TableHeader('Celsius'));
+		$row->addItem(new View_TableHeader('Fahrenheit'));
+		$row->addItem(new View_TableHeader('Celsius'));
+		$table->addHeaderItem($row);
+		$row = new View_TableRow();
+		$row->addItem(new View_TableData($this->model->getCelsius() . '&deg;C'));
+		$row->addItem(new View_TableData($this->model->getFahrenheit() . '&deg;F'));
+		$row->addItem(new View_TableData($this->model->getKelvin() . '&deg;K'));
+		$table->addItem($row);
+		$block->addItem($table);
 		$this->view->addItem($block);
 	}
 	
